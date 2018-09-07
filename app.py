@@ -13,6 +13,8 @@ app = Flask(__name__)
 quandl.ApiConfig.api_key = 'YarQnKztTjms_zWSmMZy'
 quandl.ApiConfig.api_version = '2015-04-09'
 
+months = [calendar.month_name[month] for month in range(1, 13)]
+print(months)
 years = [2018, 2017, 2016, 2015, 2014]
 date_column = 'date'
 close_column = 'close'
@@ -25,7 +27,7 @@ def index():
     if request.method == 'POST':
         ticker = request.form['ticker']
         year = request.form['year']
-        month = request.form['month']
+        month = months.index(request.form['month']) + 1
         try:
             showing_close = request.form['close'] == 'on'
         except KeyError:
@@ -38,7 +40,7 @@ def index():
                                 showing_close=showing_close,
                                 showing_adjusted_close=showing_adjusted_close))
     else:
-        return render_template('index.html', years=years)
+        return render_template('index.html', months=months, years=years)
 
 
 

@@ -48,7 +48,7 @@
             <p>Ticker symbol: <input type='text' name='ticker' placeholder='RHT' /></p>
             <p>Month:
           <select name="month">
-              {% for month in range(1, 13) %}
+              {% for month in months %}
                   <option value="{{ month }}">{{ month }}</option>
               {% endfor %}
           </select>
