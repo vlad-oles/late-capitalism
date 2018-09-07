@@ -37,7 +37,6 @@ def index():
             showing_adjusted_close = request.form['adj_close'] == 'on'
         except KeyError:
             showing_adjusted_close = False
-        print(ticker)
         return redirect(url_for('graph', ticker=ticker, month=month, year=year,
                                 showing_close=showing_close,
                                 showing_adjusted_close=showing_adjusted_close))
