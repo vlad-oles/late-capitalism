@@ -1,5 +1,4 @@
 gunicorn==19.9.0
 requests==2.19.1
 quandl==3.4.2
-calendar
 datetime
