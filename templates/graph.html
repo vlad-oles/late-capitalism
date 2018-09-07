@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Showcase for late capitalism capabilities.">
-    <!-- <link rel="icon" href="favicon.ico"> -->
 
     <title>Stock Prices Graph</title>
 
@@ -14,14 +13,14 @@
         href="http://cdn.pydata.org/bokeh/release/bokeh-0.12.16.min.css"
         rel="stylesheet" type="text/css">
 
-    <script src="http://cdn.pydata.org/bokeh/release/bokeh-0.12.16.min.js"></script>
-
     <!-- Custom CSS for navbar-->
     <style>
     body {
       padding-top: 70px;
     }
     </style>
+
+    <script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-0.12.16.min.js"></script>
   </head>
   <body>
     <!-- navigation -->
@@ -48,10 +47,11 @@
     </nav>
 
     <!-- graph -->
-		<div class="container">
+    <div class="container">
       <div class="row">
-
-    {{ script|safe }}
-    {{ div|safe }}
+        {{ script|safe }}
+        {{ div|safe }}
+      </div>>
+    </div>
   </body>
 </html>

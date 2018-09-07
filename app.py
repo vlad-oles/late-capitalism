@@ -85,4 +85,4 @@ def graph(ticker, month, year, showing_close, showing_adjusted_close):
 
 
 if __name__ == '__main__':
-  app.run(port=33507)
+  app.run(port=33507, debug=True)
