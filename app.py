@@ -13,7 +13,7 @@ app = Flask(__name__)
 quandl.ApiConfig.api_key = 'YarQnKztTjms_zWSmMZy'
 quandl.ApiConfig.api_version = '2015-04-09'
 
-months = [calendar.month_name[month] for month in range(1, 13)]
+month_names = [calendar.month_name[month] for month in range(1, 13)]
 years = [2018, 2017, 2016, 2015, 2014]
 date_column = 'date'
 close_column = 'close'
@@ -28,7 +28,7 @@ def index():
         if not ticker:
             ticker = '-'
         year = request.form['year']
-        month = months.index(request.form['month']) + 1
+        month = request.form['month']
         try:
             showing_close = request.form['close'] == 'on'
         except KeyError:
@@ -41,7 +41,7 @@ def index():
                                 showing_close=showing_close,
                                 showing_adjusted_close=showing_adjusted_close))
     else:
-        return render_template('index.html', months=months, years=years)
+        return render_template('index.html', month_names=month_names, years=years)
 
 
 
@@ -88,4 +88,4 @@ def graph(ticker, month, year, showing_close, showing_adjusted_close):
 
 
 if __name__ == '__main__':
-  app.run(port=33507)
+  app.run(port=33507, debug=True)
