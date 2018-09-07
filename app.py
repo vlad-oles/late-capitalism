@@ -48,7 +48,6 @@ def index():
 
 @app.route('/graph/<ticker>/<int:month>/<int:year>/<int:showing_close>/<int:showing_adjusted_close>')
 def graph(ticker, month, year, showing_close, showing_adjusted_close):
-    print("!!!")
     _, n_days = calendar.monthrange(year, month)
     month_first_day = datetime(year, month, 1)
     month_last_day = datetime(year, month, n_days)
