@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, redirect, url_for, session
 import numpy as np
 import quandl
 from datetime import datetime, timedelta
-from dateutil import relativedelta
 import calendar
 from bokeh.plotting import figure
 from bokeh.models import Legend
