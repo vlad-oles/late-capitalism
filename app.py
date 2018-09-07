@@ -14,7 +14,6 @@ quandl.ApiConfig.api_key = 'YarQnKztTjms_zWSmMZy'
 quandl.ApiConfig.api_version = '2015-04-09'
 
 months = [calendar.month_name[month] for month in range(1, 13)]
-print(months)
 years = [2018, 2017, 2016, 2015, 2014]
 date_column = 'date'
 close_column = 'close'
@@ -26,6 +25,8 @@ day_index_column = 'day_index'
 def index():
     if request.method == 'POST':
         ticker = request.form['ticker']
+        if not ticker:
+            ticker = '-'
         year = request.form['year']
         month = months.index(request.form['month']) + 1
         try:
@@ -36,6 +37,7 @@ def index():
             showing_adjusted_close = request.form['adj_close'] == 'on'
         except KeyError:
             showing_adjusted_close = False
+        print(ticker)
         return redirect(url_for('graph', ticker=ticker, month=month, year=year,
                                 showing_close=showing_close,
                                 showing_adjusted_close=showing_adjusted_close))
@@ -46,6 +48,7 @@ def index():
 
 @app.route('/graph/<ticker>/<int:month>/<int:year>/<int:showing_close>/<int:showing_adjusted_close>')
 def graph(ticker, month, year, showing_close, showing_adjusted_close):
+    print("!!!")
     _, n_days = calendar.monthrange(year, month)
     month_first_day = datetime(year, month, 1)
     month_last_day = datetime(year, month, n_days)
